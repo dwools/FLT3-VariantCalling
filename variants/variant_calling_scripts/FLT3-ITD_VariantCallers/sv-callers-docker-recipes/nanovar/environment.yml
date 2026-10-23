@@ -1,0 +1,10 @@
+name: sv
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+dependencies:
+  - python=3.10
+  - nanovar=1.8.3
+  - numpy=1.26.4
+  - tensorflow-cpu=2.15.0

@@ -1,0 +1,7 @@
+name: sv
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+dependencies:
+  - dysgu=1.9.0

@@ -1,0 +1,7 @@
+name: sv
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+dependencies:
+  - delly=2.7.0

@@ -1,0 +1,9 @@
+name: sv
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+dependencies:
+  - python=3.10
+  - savana=1.3.8
+  - scikit-learn=1.2.2

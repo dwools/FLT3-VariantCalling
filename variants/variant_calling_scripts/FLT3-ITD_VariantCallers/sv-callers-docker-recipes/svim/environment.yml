@@ -1,0 +1,8 @@
+name: sv
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+dependencies:
+  - python=3.10
+  - svim=2.0.0
