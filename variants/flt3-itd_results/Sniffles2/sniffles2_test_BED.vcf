@@ -1,7 +1,7 @@
 ##fileformat=VCFv4.2
 ##source=Sniffles2_2.8.1
 ##command="/opt/conda/envs/sv/bin/sniffles --input /input.bam --reference /reference.fa --vcf /output/sniffles2_test_BED.vcf --regions /regions.bed --threads 8 --allow-overwrite"
-##fileDate="2026/10/23 20:29:50"
+##fileDate="2026/10/23 21:02:19"
 ##contig=<ID=KI270728.1,length=1872759>
 ##contig=<ID=chr1,length=248956422>
 ##contig=<ID=chr10,length=133797422>

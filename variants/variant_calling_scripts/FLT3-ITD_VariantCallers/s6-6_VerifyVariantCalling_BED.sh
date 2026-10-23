@@ -44,7 +44,6 @@ docker run --rm \
     --mount type=bind,source="${input_dir}/${input_bam_bai}",target=/input.bam.bai,readonly \
     --mount type=bind,source="${reference_genome}",target=/reference.fa,readonly \
     --mount type=bind,source="${reference_genome_index}",target=/reference.fa.fai,readonly \
-    --mount type=bind,source="${matched_control}",target=/matched_control.bam,readonly \
     --mount type=bind,source="${Sniffles2_output_dir}",target=/output \
     --mount type=bind,source="${regions_bed}",target=/regions.bed,readonly \
     sv-callers:sniffles2-2.8.1 \
