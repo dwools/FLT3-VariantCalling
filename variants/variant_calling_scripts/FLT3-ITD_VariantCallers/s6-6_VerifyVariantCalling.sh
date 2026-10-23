@@ -9,6 +9,7 @@ reference_genome="/mnt/pikachu/dwools/flt3/nanopore_FLT3_20240621_Flt3_amplicon_
 reference_genome_index="${reference_genome}.fai"
 matched_control="/mnt/pikachu/dwools/flt3/nanopore_FLT3_20240621_Flt3_amplicon_B/matchedControl_gm24385_2023.12/matchedControl_gm24385_flt3/matchedControl_gm24385_flt3.bam"
 output_dir="/mnt/pikachu/dwools/flt3/nanopore_FLT3_20240621_Flt3_amplicon_B/variants/flt3-itd_results"
+regions_bed="/mnt/pikachu/dwools/flt3/nanopore_FLT3_20240621_Flt3_amplicon_B/genome/GRCh38_FLT3-full.bed"
 
 # CuteSV_output_dir="${output_dir}/CuteSV"
 # DeBreak_output_dir="${output_dir}/DeBreak"
@@ -44,10 +45,12 @@ docker run --rm \
     --mount type=bind,source="${reference_genome}",target=/reference.fa,readonly \
     --mount type=bind,source="${reference_genome_index}",target=/reference.fa.fai,readonly \
     --mount type=bind,source="${Sniffles2_output_dir}",target=/output \
+    --mount type=bind,source="${regions_bed}",target=/regions.bed,readonly \
     sv-callers:sniffles2-2.8.1 \
     --input /input.bam \
     --reference /reference.fa \
     --vcf /output/sniffles2_test.vcf \
+    --regions /regions.bed \
     --threads 8 \
     --allow-overwrite
 
