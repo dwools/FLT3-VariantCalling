@@ -1,7 +1,7 @@
 ##fileformat=VCFv4.2
 ##source=Sniffles2_2.8.1
-##command="/opt/conda/envs/sv/bin/sniffles --input /input.bam --reference /reference.fa --vcf /output/sniffles2_test.vcf --regions /regions.bed --threads 8 --allow-overwrite"
-##fileDate="2026/10/23 21:15:54"
+##command="/opt/conda/envs/sv/bin/sniffles --input /input.bam --reference /reference.fa --vcf /output/sniffles2_test.vcf --regions /regions.bed --allow-overwrite"
+##fileDate="2026/10/23 21:48:38"
 ##contig=<ID=chr13,length=114364328>
 ##ALT=<ID=INS,Description="Insertion">
 ##ALT=<ID=DEL,Description="Deletion">

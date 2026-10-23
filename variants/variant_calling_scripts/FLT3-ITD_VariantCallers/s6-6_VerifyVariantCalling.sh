@@ -51,7 +51,6 @@ docker run --rm \
     --reference /reference.fa \
     --vcf /output/sniffles2_test.vcf \
     --regions /regions.bed \
-    --threads 8 \
     --allow-overwrite
 
 # Quick check if the output VCF file exists. Make sure to rename or delete any previous test VCF files before running this check.
