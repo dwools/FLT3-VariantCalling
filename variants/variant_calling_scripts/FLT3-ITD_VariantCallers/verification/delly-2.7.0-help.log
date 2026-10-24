@@ -1,0 +1,22 @@
+**********************************************************************
+Program: Delly
+This is free software, and you are welcome to redistribute it under
+certain conditions (BSD License); for license details use '-l'.
+This program comes with ABSOLUTELY NO WARRANTY; for details use '-w'.
+
+Delly (Version: 2.7.0)
+Contact: Tobias Rausch (rausch@embl.de)
+**********************************************************************
+
+Usage: delly <command> <arguments>
+
+SV/CNV calling:
+    sr           short-read SV discovery
+    lr           long-read SV discovery
+    asm          assembly-based SV discovery
+    cnv          short- or long-read CNV discovery
+
+SV/CNV merging and filtering:
+    merge        merge variants
+    filter       filter somatic or germline variants
+

@@ -1,4 +1,3 @@
-#chrom    chromStart    chromEnd    name
 chr13	28034427	28034281	FLT3-exon13 +/- 20bp
 chr13	28034234	28034062	FLT3-exon14 +/- 20bp    
 chr13	28034011	28033867	FLT3-exon15 +/- 20bp

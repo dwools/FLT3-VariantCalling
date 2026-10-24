@@ -1,0 +1,20 @@
+usage: nanomonsv [-h] [--version]
+                 {parse,merge_control,get,validate,insert_classify,connect}
+                 ...
+
+positional arguments:
+  {parse,merge_control,get,validate,insert_classify,connect}
+    parse               Parse supporting reads for candidate structural
+                        variations
+    merge_control       Merge control panel files from parse results
+    get                 List up reliable structural variations with refined
+                        breakpoint positions
+    validate            Validate GenomonSV format SV list using nanopore
+                        sequence reads
+    insert_classify     Classify long insertion into LINE1, Alu, SVA, and so
+                        on
+    connect             Connect called SVs by support reads
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
