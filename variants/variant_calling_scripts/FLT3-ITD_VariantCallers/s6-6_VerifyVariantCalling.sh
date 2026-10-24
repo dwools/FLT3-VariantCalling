@@ -15,17 +15,17 @@ sample_name="barcode1"
 ########################################
 ##### Docker images, for reference #####
 ########################################
-# sv-callers:debreak-1.3
-# sv-callers:svim-2.0.0
-# sv-callers:severus-1.7
-# sv-callers:savana-1.3.8
-# sv-callers:nanovar-1.8.3
-# sv-callers:nanomonsv-0.9.0
-# sv-callers:dysgu-1.9.0
-# sv-callers:delly-2.7.0
-# sv-callers:sniffles2-2.8.1
-# sv-callers:cutesv-2.1.4
 
+# sv-callers:cutesv-2.1.4
+# sv-callers:debreak-1.3
+# sv-callers:delly-2.7.0
+# sv-callers:dysgu-1.9.0
+# sv-callers:nanomonsv-0.9.0
+# sv-callers:nanovar-1.8.3
+# sv-callers:savana-1.3.8
+# sv-callers:severus-1.7
+# sv-callers:sniffles2-2.8.1
+# sv-callers:svim-2.0.0
 
 # Delly_output_dir="${output_dir}/Delly"
 # Dysgu_output_dir="${output_dir}/Dysgu"
@@ -34,7 +34,7 @@ sample_name="barcode1"
 # Savana_output_dir="${output_dir}/Savana"
 # Severus_output_dir="${output_dir}/Severus"
 # Sniffles2_output_dir="${output_dir}/Sniffles2"
-# SVIM_output_dir="${output_dir}/SVIM"
+
 
 
 
@@ -45,7 +45,6 @@ sample_name="barcode1"
 # mkdir -p "${Savana_output_dir}"
 # mkdir -p "${Severus_output_dir}"
 # mkdir -p "${Sniffles2_output_dir}"
-# mkdir -p "${SVIM_output_dir}"
 
 test_cutesv() {
 	# Note 1: CuteSV's `work_dir` argument specifies the "working directory" where intermediate files are stored during the run. It must already exist before running the command, and it must be empty because cuteSV refuses to overwrite some temporary outputs (source: https://github.com/taffish/cutesv, an auxilliary GitHub repository).
@@ -69,8 +68,8 @@ test_cutesv() {
     --mount type=bind,source="${input_dir}/${input_bam_bai}",target=/input.bam.bai,readonly \
     --mount type=bind,source="${reference_genome}",target=/reference.fa,readonly \
     --mount type=bind,source="${reference_genome_index}",target=/reference.fa.fai,readonly \
-    --mount type=bind,source="${CuteSV_output_dir}",target=/output \
     --mount type=bind,source="${regions_bed}",target=/regions.bed,readonly \
+    --mount type=bind,source="${CuteSV_output_dir}",target=/output \
     sv-callers:cutesv-2.1.4 \
     /input.bam \
 	/reference.fa \
@@ -117,7 +116,6 @@ test_debreak() {
 	--mount type=bind,source="${reference_genome}",target=/reference.fa,readonly \
 	--mount type=bind,source="${reference_genome_index}",target=/reference.fa.fai,readonly \
 	--mount type=bind,source="${DeBreak_output_dir}",target=/output \
-	--mount type=bind,source="${regions_bed}",target=/regions.bed,readonly \
 	sv-callers:debreak-1.3 \
 	--bam /input.bam \
 	--out /output\
@@ -153,8 +151,8 @@ test_sniffles2() {
     --mount type=bind,source="${input_dir}/${input_bam_bai}",target=/input.bam.bai,readonly \
     --mount type=bind,source="${reference_genome}",target=/reference.fa,readonly \
     --mount type=bind,source="${reference_genome_index}",target=/reference.fa.fai,readonly \
-    --mount type=bind,source="${Sniffles2_output_dir}",target=/output \
     --mount type=bind,source="${regions_bed}",target=/regions.bed,readonly \
+    --mount type=bind,source="${Sniffles2_output_dir}",target=/output \
     sv-callers:sniffles2-2.8.1 \
     --input /input.bam \
     --reference /reference.fa \
@@ -170,6 +168,23 @@ test_sniffles2() {
 	fi
 }
 
+test_svim() {
+
+	SVIM_output_dir="${output_dir}/SVIM"
+	mkdir -p "${SVIM_output_dir}"
+
+	docker run --rm \
+    --platform linux/amd64 \
+    --cpus 8 \
+    --memory 32g \
+    --env HOME=/tmp \
+    --mount type=bind,source="${input_dir}/${input_bam}",target=/input.bam,readonly \
+    --mount type=bind,source="${input_dir}/${input_bam_bai}",target=/input.bam.bai,readonly \
+    --mount type=bind,source="${reference_genome}",target=/reference.fa,readonly \
+    --mount type=bind,source="${reference_genome_index}",target=/reference.fa.fai,readonly \
+    --mount type=bind,source="${SVIM_output_dir}",target=/output \
+	sv-callers:svim-2.0.0
+
 run_container_terminal() {
 	# Sample command to run the container in interactive terminal mode for debugging or manual execution of commands inside the container.
 	docker run --rm -it \
@@ -181,7 +196,9 @@ run_container_terminal() {
 	sv-callers:sniffles2-2.8.1
 }
 
+
 # test_cutesv
-test_debreak
+# test_debreak
 # test_sniffles2
+test_svim
 
