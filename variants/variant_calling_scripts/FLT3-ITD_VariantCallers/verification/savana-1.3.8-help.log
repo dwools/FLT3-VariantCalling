@@ -1,0 +1,29 @@
+
+███████  █████  ██    ██  █████  ███    ██  █████
+██      ██   ██ ██    ██ ██   ██ ████   ██ ██   ██
+███████ ███████ ██    ██ ███████ ██ ██  ██ ███████
+     ██ ██   ██  ██  ██  ██   ██ ██  ██ ██ ██   ██
+███████ ██   ██   ████   ██   ██ ██   ████ ██   ██
+
+Version 1.3.8
+Source: /opt/conda/envs/sv/lib/python3.10/site-packages/savana/savana.py
+
+usage: savana [-h] [--version] {run,classify,evaluate,train,cna,to} ...
+
+SAVANA - somatic SV caller
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+
+subcommands:
+  {run,classify,evaluate,train,cna,to}
+                        SAVANA sub-commands
+    run                 identify and cluster breakpoints - output raw variants
+                        without classification
+    classify            classify VCF using model
+    evaluate            label SAVANA VCF with somatic/germline/missing given
+                        VCF(s) to compare against
+    train               train model on folder of input VCFs
+    cna                 run copy number
+    to                  identify somatic SVs without normal sample

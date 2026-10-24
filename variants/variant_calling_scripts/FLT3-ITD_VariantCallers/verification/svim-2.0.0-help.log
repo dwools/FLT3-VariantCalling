@@ -1,0 +1,25 @@
+usage: svim [-h] [--version] {reads,alignment} ...
+
+SVIM (pronounced SWIM) is a structural variant caller for long reads. 
+It discriminates six different variant classes: deletions, tandem and interspersed duplications, 
+inversions, insertions and translocations. SVIM is unique in its capability of extracting both the genomic origin and 
+destination of duplications.
+
+SVIM consists of four major steps:
+- COLLECT detects signatures for SVs in long read alignments
+- CLUSTER merges signatures that come from the same SV
+- COMBINE combines clusters from different genomic regions and classifies them into distinct SV types
+- GENOTYPE uses alignments spanning SVs to determine their genotype
+
+SVIM can process two types of input. Firstly, it can detect SVs from raw reads by aligning them to a given reference genome first ("SVIM.py reads [options] working_dir reads genome").
+Alternatively, it can detect SVs from existing reads alignments in SAM/BAM format ("SVIM.py alignment [options] working_dir bam_file").
+
+positional arguments:
+  {reads,alignment}  modes
+    reads            Detect SVs from raw reads. Align reads to given reference
+                     genome first.
+    alignment        Detect SVs from an existing alignment
+
+options:
+  -h, --help         show this help message and exit
+  --version, -v      show program's version number and exit
