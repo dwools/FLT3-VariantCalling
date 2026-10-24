@@ -133,6 +133,10 @@ test_debreak() {
 	else
 		echo "DeBreak run failed. Output VCF file not found."
 	fi
+
+	# Track any files > 100 MB with Git LFS. Make sure they're 
+	find "${DeBreak_output_dir}" -type f -size +100M -exec git lfs track "{}" \;
+	
 }
 
 test_sniffles2() {
