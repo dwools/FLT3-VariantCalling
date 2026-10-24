@@ -12,8 +12,21 @@ output_dir="/mnt/pikachu/dwools/flt3/nanopore_FLT3_20240621_Flt3_amplicon_B/vari
 regions_bed="/mnt/pikachu/dwools/flt3/nanopore_FLT3_20240621_Flt3_amplicon_B/genome/GRCh38_FLT3-full.bed"
 sample_name="barcode1"
 
+########################################
+##### Docker images, for reference #####
+########################################
+# sv-callers:debreak-1.3
+# sv-callers:svim-2.0.0
+# sv-callers:severus-1.7
+# sv-callers:savana-1.3.8
+# sv-callers:nanovar-1.8.3
+# sv-callers:nanomonsv-0.9.0
+# sv-callers:dysgu-1.9.0
+# sv-callers:delly-2.7.0
+# sv-callers:sniffles2-2.8.1
+# sv-callers:cutesv-2.1.4
 
-# DeBreak_output_dir="${output_dir}/DeBreak"
+
 # Delly_output_dir="${output_dir}/Delly"
 # Dysgu_output_dir="${output_dir}/Dysgu"
 # Nanomansv_output_dir="${output_dir}/Nanomansv"
@@ -24,7 +37,7 @@ sample_name="barcode1"
 # SVIM_output_dir="${output_dir}/SVIM"
 
 
-# mkdir -p "${DeBreak_output_dir}"
+
 # mkdir -p "${Delly_output_dir}"
 # mkdir -p "${Dysgu_output_dir}"
 # mkdir -p "${Nanomansv_output_dir}"
@@ -79,6 +92,49 @@ test_cutesv() {
 	fi
 }
 
+test_debreak() {
+
+	# DeBreak's output consists of a directory containing the following files:
+
+		# debreak.vcf                   Standard VCF file of SV calls. The chromosome, coordinates, size, type, number of supporting reads, mapping quality, genotype, and multi-allelic information are recorded for each SV call.
+		# debreak-allsv-merged-final    Tab-delimited SV list, containing the name of reads supporting each SV call.
+		# sv_raw_calls/                 Includes all SV raw signals on each chromosome.
+		# debreak_poa_workspace/        Temporary files during SV breakpoint refinement with POA. For debug purpose.
+		# debreak_ins_workspace/        Temporary files during ultra-large insertion detection. For debug purpose.
+		# map_depth/                    Temporary files during sequencing depth estimation. For debug purpose.
+
+	DeBreak_output_dir="${output_dir}/DeBreak"
+	mkdir -p "${DeBreak_output_dir}"
+
+	docker run --rm \
+	--platform linux/amd64 \
+	--cpus 8 \
+	--memory 32g \
+	--env HOME=/tmp \
+	--workdir /out \
+	--mount type=bind,source="${input_dir}/${input_bam}",target=/input.bam,readonly \
+	--mount type=bind,source="${input_dir}/${input_bam_bai}",target=/input.bam.bai,readonly \
+	--mount type=bind,source="${reference_genome}",target=/reference.fa,readonly \
+	--mount type=bind,source="${reference_genome_index}",target=/reference.fa.fai,readonly \
+	--mount type=bind,source="${DeBreak_output_dir}",target=/output \
+	--mount type=bind,source="${regions_bed}",target=/regions.bed,readonly \
+	sv-callers:debreak-1.3 \
+	--bam /input.bam \
+	--out /output\
+	--rescue_large_ins \
+	--rescue_dup \
+	--poa \
+	--ref /reference.fa \
+	--tumor
+	
+	# Quick check if the output VCF file exists. Make sure to rename or delete any previous test VCF files before running this check.
+	if [ -f "${DeBreak_output_dir}/debreak.vcf" ]; then
+		echo "DeBreak run successful. Output files are available at ${DeBreak_output_dir}"
+	else
+		echo "DeBreak run failed. Output VCF file not found."
+	fi
+}
+
 test_sniffles2() {
 	
 	Sniffles2_output_dir="${output_dir}/Sniffles2"
@@ -121,4 +177,7 @@ run_container_terminal() {
 	sv-callers:sniffles2-2.8.1
 }
 
-test_cutesv
+# test_cutesv
+test_debreak
+# test_sniffles2
+

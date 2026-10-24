@@ -1,0 +1,15 @@
+chr1	111632772	3404	4	4	60.0	2c35478d-dabe-4eab-be80-7140fdbb0ab3_seg1;f1248490-67e7-4da9-840d-982b01373f25_seg1;48032574-e370-4ed8-a58c-8f46361611f0_seg1;a8b47f36-cf6b-4004-bdb5-71e352b4387e_seg1	Unique	Inversion	Imprecise	<INV>
+chr1	205281487	21409	2	2	60.0	7b095c3b-1581-4dcf-9b16-8d186dceab1b_seg1;7b095c3b-1581-4dcf-9b16-8d186dceab1b_seg1	Unique	Inversion	Imprecise	<INV>
+chr11	125575481	6616	2	2	60.0	9b57240f-6ba8-480c-bc7d-7b540eee0a06_seg1;52e42162-f98a-4da9-99e9-bd0ba49e3e15_seg1	Unique	Inversion	Imprecise	<INV>
+chr12	51010044	3926	2	2	60.0	d7f74885-018f-4c0f-8ab1-b61cbda19c84_seg1;966ccac5-34ed-4443-b5ac-b4d54296a262_seg1	Unique	Inversion	Imprecise	<INV>
+chr12	106386122	5914	3	3	60.0	05bc3c7c-819a-40a5-979e-88367560fe5c_seg1;c33a45a4-a86f-4ac6-af5f-dc7c82fcb6fd_seg1;4667af8d-7890-4278-a9f5-35573e57071c_seg1	Unique	Inversion	Imprecise	<INV>
+chr12	131715572	107	11	11	60.0	daefe5b8-0415-4913-bed3-6e31b347f211_seg1;fade0566-9709-4f1b-b384-d9ae680760a1_seg1;fe78540a-ec85-4ea1-adab-ed09a05ca7a8_seg1;aec2ee5d-f176-41bd-9700-7c0d2136524c_seg1;eeb8c4bd-a9e1-4fa0-8654-5573bbbecbed_seg1;bc4981ce-1a0c-42e1-b1d1-8d5335f8f9a9_seg1;b50aa28c-d699-4ccf-8a9b-9a29f638ba04_seg1;46c0ee07-065d-4843-8b32-78feeca4d154_seg1;ad5cb3a1-490e-4701-9097-485f5c297e3a_seg1;c6c40c55-3492-45ca-9b08-71bf7a61e7ad_seg1;8ef5a726-4fac-45b1-a76c-3642aa626562_seg1	Unique	Inversion	Imprecise	<INV>
+chr13	28019195	9136	6	6	57.0	b23c3891-8296-4009-82b4-d8c98c638fa6_seg1;fdf5fba5-900e-4170-a918-4917607ccc90_seg1;16306e09-000a-4d26-934f-9656f517b7a2_seg1;f0636ab9-91d5-43a3-b5fe-0ea051582c08_seg1;26771fd2-23dc-4ae6-8657-8d106706ec20_seg1;aefbe991-7194-4234-b4e7-2ed87c1433cf_seg1	Unique	Inversion	Imprecise	<INV>
+chr13	28023805	9287	3	3	60.0	dc33e34a-e993-4b9e-aeaf-d061817e9dee_seg1;de8d20a3-484c-4af6-9e8c-804081e6a762_seg1;170fd2c2-9de3-4656-82a3-14bbfa9d6eac_seg1	Unique	Inversion	Precise	<INV>
+chr17	82137750	5933	2	2	60.0	2244227a-14b9-4d6b-9407-0d409b7fb64f_seg1;fd7e3039-050e-4baf-862a-a5da6931cdda_seg1	Unique	Inversion	Imprecise	<INV>
+chr2	11733844	26933390	2	2	55.0	d84507c8-499b-4a75-9cc6-7ddf0312ee63_seg1;6f305d0d-f146-42e4-b962-3b8092a76bec_seg1	Unique	Inversion	Imprecise	<INV>
+chr21	8214297	44158	2	2	1.0	7c63cf0f-cc62-4ee9-bbab-43bdf52cb428_seg2;7c63cf0f-cc62-4ee9-bbab-43bdf52cb428_seg1	Unique	Inversion	Imprecise	<INV>
+chr22	40257620	12684	2	2	60.0	0bff0d2a-4f5d-4b34-95d4-ada84815c613_seg1;3f34c7f9-be22-47a5-9eb3-56e0c95c05e3_seg1	Unique	Inversion	Imprecise	<INV>
+chr22	46520323	8746	3	3	53.0	42973cbb-b7ca-499a-bbe4-6dee2f4ef85c_seg1;46214aaf-81fd-4ce9-841c-bc818821c1f4_seg1;49f86e05-a89f-4cb2-ba1c-f1f6fa084c9f_seg1	Unique	Inversion	Imprecise	<INV>
+chr7	27062090	4150	3	3	60.0	8375d948-82ac-4288-bc8c-78cf488c3d78_seg1;10cb2b6a-927f-4f59-b4d8-866943c70025_seg1;ceced2d2-89e0-49e5-b334-ba8f90c628f1_seg1	Unique	Inversion	Precise	<INV>
+chr8	15504641	99851837	3	3	60.0	01a52faa-39cf-49de-82df-c4ef74239b96_seg1;ba6f7cae-80b0-4ade-895b-2dc8b5076c20_seg1;e577df0d-a7e1-4fbc-8da7-43e72a5598c0_seg1	Unique	Inversion	Imprecise	<INV>
