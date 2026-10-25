@@ -6,3 +6,4 @@ channels:
 dependencies:
   - python=3.10
   - svim=2.0.0
+  - matplotlib<3.9

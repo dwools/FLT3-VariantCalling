@@ -22,6 +22,22 @@ chmod +x build-all.sh verify-all.sh
 
 Inspect `verification/*-help.log` carefully; CLI help exit codes can differ by caller.
 
+## SVIM plotting compatibility
+
+SVIM 2.0.0 uses Matplotlib's `Legend.legendHandles`, removed in Matplotlib 3.9.
+Its environment therefore pins `matplotlib<3.9`. Rebuild an existing image to
+apply this constraint:
+
+```bash
+docker build --platform linux/amd64 -t sv-callers:svim-2.0.0 ./svim
+```
+
+The SVIM test captures stdout and stderr in `svim-console.log` and fails on a
+nonzero Docker/pipeline status, an ERROR/CRITICAL log record, or a Python traceback.
+This is needed because SVIM 2.0.0 can log an exception and still exit with status 0.
+Log scanning is not a guarantee against errors that are neither reported through
+these markers nor reflected in the exit status.
+
 ## Warning
 
 The files are proposed recipes and were not built/tested in this environment.

@@ -132,7 +132,7 @@ test_debreak() {
 		echo "DeBreak run failed. Output VCF file not found."
 	fi
 
-	# Track any files > 100 MB with Git LFS. Make sure they're 
+	# Track any files > 100 MB with Git LFS.
 	find "${DeBreak_output_dir}" -type f -size +100M -exec git lfs track "{}" \;
 	
 }
@@ -171,20 +171,38 @@ test_sniffles2() {
 test_svim() {
 
 	SVIM_output_dir="${output_dir}/SVIM"
-	mkdir -p "${SVIM_output_dir}"
+	rm -f ${SVIM_output_dir}/*.log
+	mkdir -p ${SVIM_output_dir}
 
-	docker run --rm \
+	if docker run --rm \
     --platform linux/amd64 \
     --cpus 8 \
     --memory 32g \
     --env HOME=/tmp \
+	--workdir /out \
     --mount type=bind,source="${input_dir}/${input_bam}",target=/input.bam,readonly \
     --mount type=bind,source="${input_dir}/${input_bam_bai}",target=/input.bam.bai,readonly \
     --mount type=bind,source="${reference_genome}",target=/reference.fa,readonly \
     --mount type=bind,source="${reference_genome_index}",target=/reference.fa.fai,readonly \
     --mount type=bind,source="${SVIM_output_dir}",target=/output \
-	sv-callers:svim-2.0.0
+	sv-callers:svim-2.0.0 \
+	alignment \
+	--verbose \
+	/output \
+	/input.bam \
+	/reference.fa \
+	--sample "${sample_name}"; then
+		echo "SVIM run successful. Output files are available at ${SVIM_output_dir}"
+	else
+		local svim_status=$?
+		echo "SVIM run failed (exit status ${svim_status})." >&2
+		return "${svim_status}"
+	fi
 
+
+	# Track any files > 100 MB with Git LFS.
+	find "${SVIM_output_dir}" -type f -size +100M -exec git lfs track --filename "{}" \;
+}
 run_container_terminal() {
 	# Sample command to run the container in interactive terminal mode for debugging or manual execution of commands inside the container.
 	docker run --rm -it \
@@ -201,4 +219,3 @@ run_container_terminal() {
 # test_debreak
 # test_sniffles2
 test_svim
-
